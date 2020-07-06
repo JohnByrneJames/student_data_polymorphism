@@ -7,9 +7,17 @@ class DevOpsStudent(StudentData):  # subclass to StudentData
         self.current_grade = current_grade
         self.current_trainer = current_trainer
 
+    def print_details(self):
+        return "You have overridden the print_details() method from student_data..."
 
+
+Ross = StudentData(90, "Hulk Hagen")  # Creation of instance of the StudentData class
 John = DevOpsStudent(70, "Billy bog-man")  # Creation of an instance of the DevOpsStudent class
 
-# Although the print_details() method is not in the DevOpsStudent class it can still be used as it has been inherited
-# from the StudentData class, this allows it to access the attributes and methods of the parent.
-print(John.print_details())
+# Two classes that can be iterated and provide outputs for each method call through a
+# polymorphic variable such as instance are known as polymorphic methods
+for instance in (Ross, John):  # Creates a union of classes StudentData and DevOpsStudent
+    print(instance)  # print out the current classes object data (demonstrate different classes)
+    # instance is an alias for both classes but can access them both as they have the same method name
+    print(instance.print_details())
+    print("")
